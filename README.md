@@ -51,17 +51,27 @@ http://localhost:3000/api/comments/1/?api-key=perscholas
 GET /comments?userId=<VALUE>
 Retrieves comments by the user with the specified userId.
 
+http://localhost:3000/api/comments?userId=1&api-key=perscholas
+
 GET /comments?postId=<VALUE>
 Retrieves comments made on the post with the specified postId.
+
+http://localhost:3000/api/comments?postId=1&api-key=perscholas
 
 GET /posts/:id/comments
 Retrieves all comments made on the post with the specified id.
 
+http://localhost:3000/api/posts/1/comments?api-key=perscholas
+
 GET /users/:id/comments
 Retrieves comments made by the user with the specified id.
+
+http://localhost:3000/api/users/1/comments?api-key=perscholas
 
 GET /posts/:id/comments?userId=<VALUE>
 Retrieves all comments made on the post with the specified id by a user with the specified userId.
 
 GET /users/:id/comments?postId=<VALUE>
 Retrieves comments made by the user with the specified id on the post with the specified postId.
+
+http://localhost:3000/api/users/1/comments?postId=1&api-key=perscholas

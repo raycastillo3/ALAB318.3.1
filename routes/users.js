@@ -3,6 +3,7 @@ const router = express.Router();
 
 const users = require("../data/users");
 const posts = require("../data/posts");
+const comments = require("../data/comments");
 const error = require("../utilities/error");
 
 router
@@ -22,7 +23,6 @@ router
       if (users.find((u) => u.username == req.body.username)) {
         next(error(409, "Username Already Taken"));
       }
-
       const user = {
         id: users[users.length - 1].id + 1,
         name: req.body.name,
@@ -41,10 +41,10 @@ router
   .get((req, res, next) => {
   const userId = Number(req.params.id); 
 
-  const user = users.find((u) => u.id === userId);
+  const user = users.find((u) => u.id == userId);
   if (!user) return next(error(404, "user not found"))
   
-  const userPosts = posts.filter((post) => post.userId === userId);
+  const userPosts = posts.filter((post) => post.userId == userId);
   res.json({
     user: {id: user.id, name: user.name, username: user.username},
     posts: userPosts
@@ -97,4 +97,18 @@ router
     else next();
   });
 
+  //Modifed for route: GET /users/:id/comments?postId=<VALUE>
+router
+  .route("/:id/comments")
+  .get((req, res, next) => {
+    if (req.query.postId){
+      const postId = Number(req.query.postId); 
+      const userComments = comments.filter((c) => c.postId == postId); 
+      res.json({postId: postId, comments: userComments})
+    }
+    const id = Number(req.params.id); 
+    const userComments = comments.filter((c) => c.id == id); 
+    res.json({id: id, comments: userComments});
+  }); 
+  
 module.exports = router;

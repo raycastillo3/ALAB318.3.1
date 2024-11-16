@@ -3,18 +3,19 @@ const router = express.Router();
 
 const posts = require("../data/posts");
 const users = require("../data/users");
+const comments = require("../data/comments");
 const error = require("../utilities/error");
 
-//modified for this route: GET /api/posts?userId=<VALUE>
+//modified for route: GET /api/posts?userId=<VALUE>
 router
   .route("/")
   .get((req, res, next) => {
     if (req.query.userId){
       const userId = Number(req.query.userId); 
 
-      const usersPosts = posts.filter((p) => p.userId === userId); 
+      const userPosts = posts.filter((p) => p.userId == userId); 
 
-      return res.json({userId: userId, posts: usersPosts})
+      return res.json({userId: userId, posts: userPosts})
     }
     const links = [
       {
@@ -84,5 +85,16 @@ router
     if (post) res.json(post);
     else next();
   });
+
+router
+  .route("/:id/comments")
+  .get((req, res, next) => {
+    const id = Number(req.params.id);
+    const comment = comments.filter((c) => c.id == id); 
+    res.json({
+      id: id,
+      comments: comment
+    });
+});
 
 module.exports = router;

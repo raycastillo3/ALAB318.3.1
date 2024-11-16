@@ -4,9 +4,24 @@ const router = express.Router();
 const comments = require("../data/comments"); 
 const error = require("../utilities/error"); 
 
+//modified for route: 
+    // GET api/comments?userId=<Value>
+    // GET /comments?postId=<VALUE>
 router
     .route("/")
     .get((req, res) =>{
+        if (req.query.userId) {
+            const userId = Number(req.query.userId); 
+
+            const userComments = comments.filter((c) => c.userId == userId); 
+            return res.json({userId: userId, comments: userComments})
+        }
+        if (req.query.postId){
+            const postId = Number(req.query.postId); 
+
+            const userComments = comments.filter((c) => c.postId == postId); 
+            return res.json({postId: postId, comments: userComments})
+        }
         const links = [
             {
                 href: "comments/:id",
