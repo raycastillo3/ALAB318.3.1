@@ -105,10 +105,12 @@ router
       const postId = Number(req.query.postId); 
       const userComments = comments.filter((c) => c.postId == postId); 
       res.json({postId: postId, comments: userComments})
+    } else {
+      next();
     }
     const id = Number(req.params.id); 
     const userComments = comments.filter((c) => c.id == id); 
     res.json({id: id, comments: userComments});
   }); 
-  
+
 module.exports = router;

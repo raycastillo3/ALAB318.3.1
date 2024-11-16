@@ -71,6 +71,8 @@ http://localhost:3000/api/users/1/comments?api-key=perscholas
 GET /posts/:id/comments?userId=<VALUE>
 Retrieves all comments made on the post with the specified id by a user with the specified userId.
 
+http://localhost:3000/api/users/1/comments?postId=1&api-key=perscholas
+
 GET /users/:id/comments?postId=<VALUE>
 Retrieves comments made by the user with the specified id on the post with the specified postId.
 

@@ -86,15 +86,20 @@ router
     else next();
   });
 
+  // Modified for route: GET /users/:id/comments?postId=<VALUE>
 router
   .route("/:id/comments")
   .get((req, res, next) => {
+    if (req.query.userId){
+      const userId = Number(req.query.userId);
+      const userComments = comments.filter((c) => c.userId == userId); 
+      res.json({userId: userId, comments: userComments})
+    } else {
+      next();
+    }
     const id = Number(req.params.id);
-    const comment = comments.filter((c) => c.id == id); 
-    res.json({
-      id: id,
-      comments: comment
-    });
+    const userComments = comments.filter((c) => c.id == id); 
+    res.json({id: id, comments: userComments});
 });
 
 module.exports = router;
