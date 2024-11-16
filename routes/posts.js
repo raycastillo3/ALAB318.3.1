@@ -93,10 +93,10 @@ router
     if (req.query.userId){
       const userId = Number(req.query.userId);
       const userComments = comments.filter((c) => c.userId == userId); 
-      res.json({userId: userId, comments: userComments})
-    } else {
-      next();
-    }
+      res.json({userId: userId, comments: userComments}); 
+
+      if (isNaN(userId)) return next(error(400, "Invalid user ID"))
+    } 
     const id = Number(req.params.id);
     const userComments = comments.filter((c) => c.id == id); 
     res.json({id: id, comments: userComments});
