@@ -37,12 +37,16 @@ Retrieves the comment with the specified id.
 
 http://localhost:3000/api/comments/1/?api-key=perscholas
 
-
 PATCH /comments/:id
 Used to update a comment with the specified id with a new body.
 
+http://localhost:3000/api/comments/1/?api-key=perscholas
+
 DELETE /comments/:id
 Used to delete a comment with the specified id.
+Make sure you use an id that is valid or make a POST request first
+http://localhost:3000/api/comments/1/?api-key=perscholas
+
 
 GET /comments?userId=<VALUE>
 Retrieves comments by the user with the specified userId.

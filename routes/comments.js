@@ -63,7 +63,7 @@ router
     })
     .delete((req, res, next) =>{
         const comment = comments.find((c, i) => {
-            if (c.id === req.params.id) {
+            if (c.id == req.params.id) {
                 comments.splice(i, 1);
                 return true;
             }
