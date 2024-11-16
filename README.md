@@ -1,14 +1,9 @@
-# Node.js template
-
+# Node.js
 This is a Node.js project.
 
-Add your [configuration](https://codesandbox.io/docs/projects/learn/setting-up/tasks) to optimize it for [CodeSandbox](https://codesandbox.io/p/dashboard).
+## ROUTES:
+Clone repository, run these endpoints on your local host: 
 
-## Resources
-- [CodeSandbox — Docs](https://codesandbox.io/docs/projects)
-- [CodeSandbox — Discord](https://discord.gg/Ggarp3pX5H)
-
-### ROUTES:
 GET /api/users/:id/posts
 Retrieves all posts by a user with the specified id.
 
@@ -46,7 +41,6 @@ DELETE /comments/:id
 Used to delete a comment with the specified id.
 Make sure you use an id that is valid or make a POST request first
 http://localhost:3000/api/comments/1/?api-key=perscholas
-
 
 GET /comments?userId=<VALUE>
 Retrieves comments by the user with the specified userId.
