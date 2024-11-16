@@ -11,13 +11,16 @@ Add your [configuration](https://codesandbox.io/docs/projects/learn/setting-up/t
 ### ROUTES:
 GET /api/users/:id/posts
 Retrieves all posts by a user with the specified id.
+
 http://localhost:3000/api/users/1/posts?api-key=perscholas 
 
 GET /api/posts?userId=<VALUE>
 Retrieves all posts by a user with the specified postId.
+
 http://localhost:3000/api/posts?userId=1&api-key=perscholas
 
 GET /comments
+
 http://localhost:3000/api/comments?api-key=perscholas
 
 POST /comments
@@ -26,10 +29,14 @@ It should have the following fields:
 * __userId__: the id of the user that created the comment.
 * __postId__: the id of the post the comment was made on.
 * __body__: the text of the comment.
+
 http://localhost:3000/api/comments?api-key=perscholas
 
 GET /comments/:id
 Retrieves the comment with the specified id.
+
+http://localhost:3000/api/comments/1/?api-key=perscholas
+
 
 PATCH /comments/:id
 Used to update a comment with the specified id with a new body.
