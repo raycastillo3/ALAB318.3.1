@@ -34,7 +34,6 @@ router
         title: req.body.title,
         content: req.body.content,
       };
-
       posts.push(post);
       res.json(posts[posts.length - 1]);
     } else next(error(400, "Insufficient Data"));
